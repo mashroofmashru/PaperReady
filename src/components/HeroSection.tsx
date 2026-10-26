@@ -111,6 +111,23 @@ export default function HeroSection() {
           >
 
 
+            {/* Eyebrow badge */}
+            <Stack direction="row" spacing={1} sx={{ justifyContent: "center", alignItems: "center", mb: 2.5 }}>
+              <Chip
+                icon={<Box sx={pulseDotSx} />}
+                label="Community Verified · Open Government Initiative"
+                size="small"
+                sx={{
+                  bgcolor: "rgba(255, 87, 51, 0.08)",
+                  color: "secondary.dark",
+                  fontWeight: 700,
+                  fontSize: "0.78rem",
+                  border: "1px solid rgba(255, 87, 51, 0.2)",
+                  backdropFilter: "blur(6px)",
+                }}
+              />
+            </Stack>
+
             {/* Main Headline */}
             <Typography
               variant="h1"
