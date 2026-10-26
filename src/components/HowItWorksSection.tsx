@@ -52,11 +52,11 @@ export default function HowItWorksSection() {
       component="section"
       id="how-it-works"
       sx={{
-        py: { xs: 8, md: 12 },
+        py: { xs: 4, md: 8 },
         bgcolor: "background.default",
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" sx={{ px: { xs: 4, sm: 6, md: 8 } }}>
         {/* ── Section Header ── */}
         <Box sx={{ mb: 6 }}>
           <Typography

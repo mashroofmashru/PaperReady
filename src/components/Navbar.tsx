@@ -61,7 +61,7 @@ export default function Navbar() {
           zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 4, sm: 6, md: 8 } }}>
           <Toolbar disableGutters sx={{ height: 68, justifyContent: "space-between" }}>
             {/* ── Brand Logo ── */}
             <Box
@@ -146,7 +146,8 @@ export default function Navbar() {
             </Stack>
 
             {/* ── Right Actions ── */}
-            <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
+            {/* 
+              <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
               <Button
                 component={Link}
                 href="#categories"
@@ -162,7 +163,6 @@ export default function Navbar() {
                 Browse Checklists
               </Button>
 
-              {/* Mobile Menu Icon */}
               <IconButton
                 onClick={toggleDrawer(true)}
                 sx={{ display: { md: "none" }, color: "text.primary" }}
@@ -170,7 +170,7 @@ export default function Navbar() {
               >
                 <MenuIcon />
               </IconButton>
-            </Stack>
+            </Stack> */}
           </Toolbar>
         </Container>
       </AppBar>

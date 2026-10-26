@@ -455,14 +455,14 @@ export default function CategoriesSection() {
         component="section"
         id="categories"
         sx={{
-          py: { xs: 8, md: 12 },
+          py: { xs: 4, md: 8 },
           bgcolor: "background.paper",
           borderTop: "1px solid",
           borderBottom: "1px solid",
           borderColor: "divider",
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 4, sm: 6, md: 8 } }}>
           {/* Section Header */}
           <Box sx={{ mb: 4 }}>
             <Typography
@@ -520,7 +520,7 @@ export default function CategoriesSection() {
                   },
                 }}
                 sx={{
-                  minWidth: { xs: "100%", md: 340 },
+                  minWidth: { xs: "100%", md: 500 },
                   "& .MuiOutlinedInput-root": {
                     borderRadius: 2,
                     bgcolor: "background.default",

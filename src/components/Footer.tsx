@@ -62,11 +62,11 @@ export default function Footer() {
         bgcolor: "background.paper",
         borderTop: "1px solid",
         borderColor: "divider",
-        pt: { xs: 8, md: 10 },
+        py: { xs: 4, md: 8 },
         pb: 5,
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" sx={{ px: { xs: 4, sm: 6, md: 8 } }}>
         <Grid container spacing={5} sx={{ mb: 6 }}>
           {/* Brand Info Column */}
           <Grid size={{ xs: 12, md: 4.5 }}>

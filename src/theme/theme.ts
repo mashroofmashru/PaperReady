@@ -124,5 +124,21 @@ export const theme = createTheme({
         },
       },
     },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          paddingLeft: "16px",
+          paddingRight: "16px",
+          "@media (min-width: 600px)": {
+            paddingLeft: "24px",
+            paddingRight: "24px",
+          },
+          "@media (min-width: 1200px)": {
+            paddingLeft: "32px",
+            paddingRight: "32px",
+          },
+        },
+      },
+    },
   },
 });
