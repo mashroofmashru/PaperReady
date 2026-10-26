@@ -32,7 +32,6 @@ import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
 import BalanceIcon from "@mui/icons-material/Balance";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SearchIcon from "@mui/icons-material/Search";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import ChecklistModal, { ServiceData } from "./ChecklistModal";
 
 export interface CategoryCardData extends ServiceData {
@@ -43,6 +42,8 @@ export interface CategoryCardData extends ServiceData {
   desc: string;
   count: number;
   tags: string[];
+  color: string;
+  bgColor: string;
 }
 
 const CATEGORIES_DATA: CategoryCardData[] = [
@@ -54,6 +55,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Citizen Services (G2C)",
     subcategory: "Identity Management",
     icon: <FlightTakeoffIcon />,
+    color: "#0284C7",
+    bgColor: "rgba(2, 132, 199, 0.1)",
     title: "Passports & Travel",
     category: "Passports & Travel",
     appType: "Fresh, Adult Renewal, Tatkal, Minor",
@@ -81,6 +84,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Citizen Services (G2C)",
     subcategory: "Identity Management",
     icon: <DirectionsCarIcon />,
+    color: "#EA580C",
+    bgColor: "rgba(234, 88, 12, 0.1)",
     title: "Driving & Transport",
     category: "Driving & Transport",
     appType: "Learner's, Permanent DL, RC Transfer",
@@ -106,6 +111,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Citizen Services (G2C)",
     subcategory: "Identity Management",
     icon: <DescriptionIcon />,
+    color: "#059669",
+    bgColor: "rgba(5, 150, 105, 0.1)",
     title: "Vital Certificates",
     category: "Vital Certificates",
     appType: "Birth, Marriage, Domicile, Caste",
@@ -124,6 +131,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Citizen Services (G2C)",
     subcategory: "Identity Management",
     icon: <BadgeIcon />,
+    color: "#4F46E5",
+    bgColor: "rgba(79, 70, 229, 0.1)",
     title: "Identity & Citizen Records",
     category: "Identity & Citizen Records",
     appType: "Aadhaar, Voter ID, PAN Allotment",
@@ -142,6 +151,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Citizen Services (G2C)",
     subcategory: "Taxation & Revenue",
     icon: <ReceiptLongIcon />,
+    color: "#0D9488",
+    bgColor: "rgba(13, 148, 136, 0.1)",
     title: "Personal Taxes & Municipal Utilities",
     category: "Taxation & Revenue",
     appType: "ITR-1/2, Property Tax, Utility Sanction",
@@ -160,6 +171,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Citizen Services (G2C)",
     subcategory: "Voting & Civic Engagement",
     icon: <HowToVoteIcon />,
+    color: "#7C3AED",
+    bgColor: "rgba(124, 58, 237, 0.1)",
     title: "Voting & Civic Engagement",
     category: "Voting & Civic Engagement",
     appType: "Form 6, Form 8, Polling Locator, CPGRAMS",
@@ -188,6 +201,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Business Services (G2B)",
     subcategory: "Corporate Registration",
     icon: <BusinessCenterIcon />,
+    color: "#0F172A",
+    bgColor: "rgba(15, 23, 42, 0.08)",
     title: "Corporate Registration & Tax IDs",
     category: "Corporate Registration",
     appType: "SPICe+ MCA21, LLP, PAN/TAN, ROC",
@@ -208,6 +223,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Business Services (G2B)",
     subcategory: "Permits & Licensing",
     icon: <HomeWorkIcon />,
+    color: "#D97706",
+    bgColor: "rgba(217, 119, 6, 0.1)",
     title: "Permits & Commercial Licensing",
     category: "Permits & Licensing",
     appType: "FSSAI, Shops Act, Building Permit, Trade",
@@ -227,6 +244,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Business Services (G2B)",
     subcategory: "Permits & Licensing",
     icon: <ReceiptLongIcon />,
+    color: "#E11D48",
+    bgColor: "rgba(225, 29, 72, 0.1)",
     title: "Commercial Taxation & GST Returns",
     category: "Commercial Taxation",
     appType: "GST Registration, GSTR-1/3B, Commercial TDS",
@@ -249,6 +268,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Internal Operations (G2G)",
     subcategory: "Public Procurement",
     icon: <ShoppingCartCheckoutIcon />,
+    color: "#2563EB",
+    bgColor: "rgba(37, 99, 235, 0.1)",
     title: "Public Procurement & GeM Portal",
     category: "Public Procurement",
     appType: "GeM Primary Seller, CPPP Tenders, EMD",
@@ -268,6 +289,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Internal Operations (G2G)",
     subcategory: "Inter-Agency Data Sharing",
     icon: <LanIcon />,
+    color: "#16A34A",
+    bgColor: "rgba(22, 163, 74, 0.1)",
     title: "Inter-Agency Data Sharing & Clearances",
     category: "Inter-Agency Data Sharing",
     appType: "CCTNS Verification, Cadre Transfer, Vigilance NOC",
@@ -290,6 +313,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Health & Human Services",
     subcategory: "Welfare & Benefits",
     icon: <VolunteerActivismIcon />,
+    color: "#B45309",
+    bgColor: "rgba(180, 83, 9, 0.1)",
     title: "Welfare & Direct Benefit Support",
     category: "Welfare & Benefits",
     appType: "Ration Card, PM Kisan, Pensions, DBT",
@@ -309,6 +334,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Health & Human Services",
     subcategory: "Public Health Tracking",
     icon: <LocalHospitalIcon />,
+    color: "#DC2626",
+    bgColor: "rgba(220, 38, 38, 0.1)",
     title: "Public Health & Disability Services",
     category: "Public Health Tracking",
     appType: "Ayushman Bharat, UDID Card, ESIC Benefits",
@@ -337,6 +364,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Public Safety & Justice",
     subcategory: "Emergency Dispatch",
     icon: <LocalPoliceIcon />,
+    color: "#1E40AF",
+    bgColor: "rgba(30, 64, 175, 0.1)",
     title: "Police Clearance & Public Safety",
     category: "Emergency Dispatch & Police",
     appType: "Police Verification, Lost FIR, Arms Licence",
@@ -362,6 +391,8 @@ const CATEGORIES_DATA: CategoryCardData[] = [
     group: "Public Safety & Justice",
     subcategory: "Court Case Management",
     icon: <BalanceIcon />,
+    color: "#9333EA",
+    bgColor: "rgba(147, 51, 234, 0.1)",
     title: "Court Case Management & Legal Services",
     category: "Court Case Management",
     appType: "e-Courts Filing, Legal Heir, RTI, Affidavits",
@@ -469,8 +500,7 @@ export default function CategoriesSection() {
                   </Box>
                 </Typography>
                 <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                  Explore verified document checklists categorized by Government-to-Citizen (G2C), Business (G2B),
-                  Internal Operations (G2G), Health & Human Services, and Public Safety & Justice.
+                  Select your service to view required original documents, photocopies, and photo specifications.
                 </Typography>
               </Box>
 
@@ -582,173 +612,147 @@ export default function CategoriesSection() {
               </Typography>
             </Box>
           ) : (
-            <Grid container spacing={3}>
+            <Grid container spacing={2.5}>
               {filteredCategories.map((cat) => (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={cat.id}>
                   <Card
                     variant="outlined"
                     sx={{
                       height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      borderRadius: 3,
+                      borderRadius: 2.5,
                       bgcolor: "background.paper",
-                      transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                      transition: "all 0.2s ease-in-out",
+                      borderColor: "divider",
                       "&:hover": {
-                        transform: "translateY(-4px)",
-                        borderColor: "secondary.main",
-                        boxShadow: "0 12px 28px -6px rgba(15, 23, 42, 0.08)",
+                        transform: "translateY(-3px)",
+                        borderColor: cat.color,
+                        boxShadow: "0 8px 24px -4px rgba(15, 23, 42, 0.08)",
                       },
                     }}
                   >
                     <CardActionArea
                       onClick={() => handleOpenChecklist(cat)}
                       sx={{
-                        p: 3,
-                        flexGrow: 1,
+                        p: 2.5,
+                        height: "100%",
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "flex-start",
+                        justifyContent: "space-between",
                       }}
                     >
-                      {/* Top Row: Icon, Group, and Count */}
-                      <Stack
-                        direction="row"
-                        sx={{
-                          width: "100%",
-                          mb: 2,
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Avatar
+                      <Box sx={{ width: "100%" }}>
+                        {/* Top: Icon & Document Count */}
+                        <Stack
+                          direction="row"
                           sx={{
-                            width: 48,
-                            height: 48,
-                            bgcolor: "rgba(255, 87, 51, 0.08)",
-                            color: "secondary.main",
+                            width: "100%",
+                            mb: 1.5,
+                            justifyContent: "space-between",
+                            alignItems: "center",
                           }}
                         >
-                          {cat.icon}
-                        </Avatar>
-                        <Stack direction="row" spacing={0.75} sx={{ alignItems: "center" }}>
+                          <Avatar
+                            sx={{
+                              width: 44,
+                              height: 44,
+                              borderRadius: "10px",
+                              bgcolor: cat.bgColor,
+                              color: cat.color,
+                            }}
+                          >
+                            {cat.icon}
+                          </Avatar>
                           <Chip
                             label={`${cat.count} Docs`}
                             size="small"
                             sx={{
-                              bgcolor: "rgba(15, 23, 42, 0.05)",
-                              fontWeight: 700,
+                              bgcolor: "rgba(15, 23, 42, 0.04)",
+                              fontWeight: 600,
                               fontSize: "0.72rem",
+                              height: 24,
                             }}
                           />
                         </Stack>
-                      </Stack>
 
-                      {/* Subcategory & Group pill */}
-                      <Stack
-                        direction="row"
-                        spacing={0.75}
-                        sx={{ mb: 1.5, flexWrap: "wrap", gap: 0.5 }}
-                      >
-                        <Chip
-                          label={cat.subcategory}
-                          size="small"
+                        {/* Subcategory Label */}
+                        <Typography
+                          variant="caption"
                           sx={{
-                            bgcolor: "rgba(255, 87, 51, 0.1)",
-                            color: "secondary.dark",
                             fontWeight: 700,
-                            fontSize: "0.7rem",
-                          }}
-                        />
-                        <Chip
-                          label={cat.group.split(" ")[0]}
-                          size="small"
-                          variant="outlined"
-                          sx={{
-                            borderColor: "divider",
-                            color: "text.secondary",
+                            color: cat.color,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.05em",
                             fontSize: "0.68rem",
-                            fontWeight: 500,
-                          }}
-                        />
-                      </Stack>
-
-                      {/* Title & Description */}
-                      <Typography
-                        variant="h5"
-                        sx={{ fontWeight: 800, mb: 1, color: "text.primary", fontSize: "1.15rem" }}
-                      >
-                        {cat.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ mb: 2.5, lineHeight: 1.6, flexGrow: 1 }}
-                      >
-                        {cat.desc}
-                      </Typography>
-
-                      {/* Photo Spec Notice if applicable */}
-                      {cat.photoSpecs && (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 0.75,
-                            bgcolor: "rgba(15, 23, 42, 0.03)",
-                            border: "1px solid",
-                            borderColor: "divider",
-                            borderRadius: 1.5,
-                            px: 1.25,
-                            py: 0.5,
-                            mb: 2,
-                            width: "100%",
+                            display: "block",
+                            mb: 0.5,
                           }}
                         >
-                          <CameraAltIcon sx={{ fontSize: 14, color: "secondary.main" }} />
-                          <Typography
-                            variant="caption"
-                            sx={{ fontWeight: 600, color: "text.secondary" }}
-                          >
-                            Photo spec: {cat.photoSpecs.size} ({cat.photoSpecs.background})
-                          </Typography>
-                        </Box>
-                      )}
+                          {cat.subcategory}
+                        </Typography>
 
-                      {/* Tags */}
-                      <Stack
-                        direction="row"
-                        spacing={0.75}
-                        sx={{ flexWrap: "wrap", gap: 0.75, mb: 2.5 }}
-                      >
-                        {cat.tags.map((tag) => (
-                          <Chip
-                            key={tag}
-                            label={tag}
-                            size="small"
-                            variant="outlined"
-                            sx={{
-                              fontSize: "0.72rem",
-                              borderColor: "divider",
-                              bgcolor: "background.default",
-                            }}
-                          />
-                        ))}
-                      </Stack>
+                        {/* Title */}
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: 700,
+                            color: "text.primary",
+                            fontSize: "1.05rem",
+                            lineHeight: 1.35,
+                            mb: 1.5,
+                          }}
+                        >
+                          {cat.title}
+                        </Typography>
 
-                      {/* Action Link */}
+                        {/* Concise Tags */}
+                        <Stack
+                          direction="row"
+                          sx={{ flexWrap: "wrap", gap: 0.6, mb: 2 }}
+                        >
+                          {cat.tags.slice(0, 3).map((tag) => (
+                            <Chip
+                              key={tag}
+                              label={tag}
+                              size="small"
+                              sx={{
+                                fontSize: "0.7rem",
+                                bgcolor: "background.default",
+                                border: "1px solid",
+                                borderColor: "divider",
+                                height: 23,
+                              }}
+                            />
+                          ))}
+                          {cat.tags.length > 3 && (
+                            <Chip
+                              label={`+${cat.tags.length - 3}`}
+                              size="small"
+                              sx={{
+                                fontSize: "0.68rem",
+                                bgcolor: "transparent",
+                                color: "text.secondary",
+                                height: 23,
+                              }}
+                            />
+                          )}
+                        </Stack>
+                      </Box>
+
+                      {/* Bottom Action */}
                       <Box
                         sx={{
                           display: "flex",
                           alignItems: "center",
-                          gap: 0.75,
-                          color: "secondary.main",
-                          fontWeight: 700,
-                          fontSize: "0.88rem",
+                          gap: 0.5,
+                          color: cat.color,
+                          fontWeight: 600,
+                          fontSize: "0.84rem",
+                          pt: 0.5,
                         }}
                       >
-                        Open Interactive Checklist
-                        <ArrowForwardIcon sx={{ fontSize: 16 }} />
+                        View Checklist
+                        <ArrowForwardIcon sx={{ fontSize: 14 }} />
                       </Box>
                     </CardActionArea>
                   </Card>
