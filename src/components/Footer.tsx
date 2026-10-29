@@ -24,10 +24,10 @@ const FOOTER_SECTIONS = [
   {
     title: "Product",
     links: [
-      { label: "Browse Checklists", href: "#categories" },
-      { label: "How It Works", href: "#how-it-works" },
-      { label: "Platform Features", href: "#features" },
-      { label: "Photo Specs Guide", href: "#categories" },
+      { label: "Browse Checklists", href: "/checklists" },
+      { label: "How It Works", href: "/#how-it-works" },
+      { label: "Platform Features", href: "/#features" },
+      { label: "Photo Specs Guide", href: "/checklists" },
     ],
   },
   {

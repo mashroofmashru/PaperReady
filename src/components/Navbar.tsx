@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   AppBar,
   Toolbar,
@@ -25,14 +26,16 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const NAV_ITEMS = [
-  { label: "Categories", href: "#categories" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Features", href: "#features" },
+  { label: "Checklists", href: "/checklists" },
+  { label: "Categories", href: "/#categories" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Features", href: "/#features" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,41 +125,51 @@ export default function Navbar() {
               spacing={1}
               sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}
             >
-              {NAV_ITEMS.map((item) => (
-                <Button
-                  key={item.href}
-                  component={Link}
-                  href={item.href}
-                  sx={{
-                    color: "text.secondary",
-                    fontSize: "0.9rem",
-                    fontWeight: 500,
-                    px: 1.5,
-                    py: 0.75,
-                    borderRadius: 2,
-                    "&:hover": {
-                      color: "primary.main",
-                      bgcolor: "rgba(15, 23, 42, 0.04)",
-                    },
-                  }}
-                >
-                  {item.label}
-                </Button>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const isActive =
+                  item.href === pathname ||
+                  (item.href.startsWith("/checklists") && pathname?.startsWith("/checklists"));
+                return (
+                  <Button
+                    key={item.href}
+                    component={Link}
+                    href={item.href}
+                    sx={{
+                      color: isActive ? "secondary.main" : "text.secondary",
+                      bgcolor: isActive ? "rgba(255, 87, 51, 0.08)" : "transparent",
+                      fontSize: "0.9rem",
+                      fontWeight: isActive ? 700 : 500,
+                      px: 1.75,
+                      py: 0.75,
+                      borderRadius: 2,
+                      transition: "all 0.15s ease",
+                      "&:hover": {
+                        color: "primary.main",
+                        bgcolor: "rgba(15, 23, 42, 0.04)",
+                      },
+                    }}
+                  >
+                    {item.label}
+                  </Button>
+                );
+              })}
             </Stack>
 
             {/* ── Right Actions ── */}
-            {/* 
-              <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
+            <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
               <Button
                 component={Link}
-                href="#categories"
+                href="/checklists"
                 variant="contained"
                 color="secondary"
                 size="small"
                 endIcon={<ArrowForwardIcon sx={{ fontSize: 16 }} />}
                 sx={{
                   display: { xs: "none", sm: "inline-flex" },
+                  fontWeight: 700,
+                  px: 2.2,
+                  py: 0.9,
+                  borderRadius: 2,
                   boxShadow: "0 4px 12px rgba(255, 87, 51, 0.25)",
                 }}
               >
@@ -170,7 +183,7 @@ export default function Navbar() {
               >
                 <MenuIcon />
               </IconButton>
-            </Stack> */}
+            </Stack>
           </Toolbar>
         </Container>
       </AppBar>
@@ -182,7 +195,7 @@ export default function Navbar() {
         onClose={toggleDrawer(false)}
         slotProps={{
           paper: {
-            sx: { width: 280, p: 2 },
+            sx: { width: 290, p: 2.5 },
           },
         }}
       >
@@ -190,42 +203,63 @@ export default function Navbar() {
           <Typography variant="h6" sx={{ fontWeight: 800 }}>
             Paper<span style={{ color: "#FF5733" }}>Ready</span>
           </Typography>
-          <IconButton onClick={toggleDrawer(false)}>
+          <IconButton onClick={toggleDrawer(false)} size="small">
             <CloseIcon />
           </IconButton>
         </Box>
         <Divider sx={{ mb: 2 }} />
         <List>
-          {NAV_ITEMS.map((item) => (
-            <ListItem key={item.href} disablePadding>
-              <ListItemButton
-                component={Link}
-                href={item.href}
-                onClick={toggleDrawer(false)}
-                sx={{ borderRadius: 2, mb: 0.5 }}
-              >
-                <ListItemText
-                  primary={
-                    <Typography sx={{ fontWeight: 600, fontSize: "0.95rem" }}>
-                      {item.label}
-                    </Typography>
-                  }
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isActive =
+              item.href === pathname ||
+              (item.href.startsWith("/checklists") && pathname?.startsWith("/checklists"));
+            return (
+              <ListItem key={item.href} disablePadding>
+                <ListItemButton
+                  component={Link}
+                  href={item.href}
+                  onClick={toggleDrawer(false)}
+                  sx={{
+                    borderRadius: 2,
+                    mb: 0.5,
+                    bgcolor: isActive ? "rgba(255, 87, 51, 0.08)" : "transparent",
+                  }}
+                >
+                  <ListItemText
+                    primary={
+                      <Typography
+                        sx={{
+                          fontWeight: isActive ? 700 : 600,
+                          fontSize: "0.95rem",
+                          color: isActive ? "secondary.main" : "text.primary",
+                        }}
+                      >
+                        {item.label}
+                      </Typography>
+                    }
+                  />
+                </ListItemButton>
+              </ListItem>
+            );
+          })}
         </List>
         <Box sx={{ mt: 3 }}>
           <Button
             component={Link}
-            href="#categories"
+            href="/checklists"
             fullWidth
             variant="contained"
             color="secondary"
             onClick={toggleDrawer(false)}
-            sx={{ mb: 1.5 }}
+            endIcon={<ArrowForwardIcon sx={{ fontSize: 16 }} />}
+            sx={{
+              py: 1.2,
+              fontWeight: 700,
+              borderRadius: 2,
+              boxShadow: "0 4px 12px rgba(255, 87, 51, 0.25)",
+            }}
           >
-            Browse Checklists
+            Browse All Checklists
           </Button>
         </Box>
       </Drawer>

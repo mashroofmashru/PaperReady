@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Box,
   Container,
@@ -65,14 +66,19 @@ const tickerContainerSx = {
 } as const;
 
 export default function HeroSection() {
+  const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const categoriesEl = document.getElementById("categories");
-    if (categoriesEl) {
-      categoriesEl.scrollIntoView({ behavior: "smooth" });
+    if (searchQuery.trim()) {
+      router.push(`/checklists?q=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      const categoriesEl = document.getElementById("categories");
+      if (categoriesEl) {
+        categoriesEl.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -238,11 +244,7 @@ export default function HeroSection() {
                   label={term}
                   size="small"
                   onClick={() => {
-                    setSearchQuery(term);
-                    const categoriesEl = document.getElementById("categories");
-                    if (categoriesEl) {
-                      categoriesEl.scrollIntoView({ behavior: "smooth" });
-                    }
+                    router.push(`/checklists?q=${encodeURIComponent(term)}`);
                   }}
                   sx={{
                     cursor: "pointer",
